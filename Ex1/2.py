@@ -1,4 +1,6 @@
 import numpy as np
+import scipy.stats as stats
+import matplotlib.pyplot as plt
 
 sample_with_speed_limit = np.array([ 7,  9,  9,  9,  9,  9, 10, 11, 11, 12,
                             12, 12, 12, 12, 13, 13, 13, 14, 14, 15,
@@ -58,3 +60,14 @@ print(f"skewness_with_limit: {skewness_with_limit}")
 print(f"kurtosis_with_limit: {kurtosis_with_limit}")
 print(f"skewness_without_limit: {skewness_without_limit}")
 print(f"kurtosis_without_limit: {kurtosis_without_limit}")
+
+print(f"skewness_with_limit using scipy: {stats.skew(sample_with_speed_limit)}")
+print(f"kurtosis_with_limit using scipy: {stats.kurtosis(sample_with_speed_limit)}")
+print(f"skewness_without_limit using scipy: {stats.skew(sample_without_speed_limit)}")
+print(f"kurtosis_without_limit using scipy: {stats.kurtosis(sample_without_speed_limit)}")
+
+plt.figure(figsize=(10, 6))
+plt.boxplot([sample_with_speed_limit, sample_without_speed_limit], labels=[f"Sample with speed limit (n = {len(sample_with_speed_limit)})", f"Sample without speed limit (n = {len(sample_without_speed_limit)})"])
+plt.title("Motorway accidents in Sweden with and without speed limit (boxplots).")
+plt.ylabel("Number of accidents")
+plt.show()
