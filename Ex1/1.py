@@ -13,7 +13,7 @@ def draw_histogramm(lower_bound, upper_bound, num_of_intervals, samples):
                 bin_counts[index] += 1
                 break
 
-    relative_bin_counts = bin_counts / len(samples)
+    relative_bin_counts = bin_counts / (len(samples) * step)
     
     plt.bar(bins, relative_bin_counts, width=step, align='edge', edgecolor='black', alpha=0.7)
     plt.xlim(lower_bound, upper_bound)
